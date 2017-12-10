@@ -24,7 +24,8 @@ Output: Currently void
 '''
 
 # TODO: Figure out what the return value should be (distribution, perhaps, of all damage scores)
-# Also TODO: Parallelize runs, so that the code can return much faster
+# Also TODO: Parallelize runs, so that the code can return much faster,
+#            perhaps using the Pool object within `multithreading`, with map
 
 def spell_sim_expectedValue(n_dice, dice_num, empSpell = False, charisma=3,
               armorClass=12, advantage=False, disadvantage=False, proficiency=2, simNumber=100000):
