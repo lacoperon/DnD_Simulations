@@ -101,23 +101,38 @@ def single_spell_sim(n_dice, dice_num, empSpell = False, charisma=3,
 # Actual simulation scripting
 if __name__ == "__main__":
 
-    charisma_level = 5
+    charisma_level = 6
     levels = [1,2,3]
     ac = 10
     prof_bonus = 3
     sim_num = 100000
-    print("Chromatic Orb Expectation: (w charisma)", charisma_level, "and armor class", ac)
-    for i in levels:
-        print("For level", i)
+    print("Fireball Expectation: (w charisma)", charisma_level, "and armor class", ac)
+    for i in [1]:
         print("With empSpell, with advantage")
-        spell_sim_expectedValue(i + 3, 8, empSpell = True, charisma=charisma_level,
+        spell_sim_expectedValue(8, 6, empSpell = True, charisma=charisma_level,
                       armorClass=ac, advantage=True, disadvantage=False, proficiency=prof_bonus, simNumber=sim_num)
-        print("With empSpell, no advantage")
-        spell_sim_expectedValue(i + 3, 8, empSpell = True, charisma=charisma_level,
+        print("With empSpell, without advantage")
+        spell_sim_expectedValue(8, 6, empSpell = True, charisma=charisma_level,
                       armorClass=ac, advantage=False, disadvantage=False, proficiency=prof_bonus, simNumber=sim_num)
         print("Without empSpell, with advantage")
-        spell_sim_expectedValue(i + 3, 8, empSpell = False, charisma=charisma_level,
+        spell_sim_expectedValue(8, 6, empSpell = False, charisma=charisma_level,
                       armorClass=ac, advantage=True, disadvantage=False, proficiency=prof_bonus, simNumber=sim_num)
-        print("Without empSpell, no advantage")
-        spell_sim_expectedValue(i + 3, 8, empSpell = False, charisma=charisma_level,
+        print("Without empSpell, without advantage")
+        spell_sim_expectedValue(8, 6, empSpell = False, charisma=charisma_level,
+                      armorClass=ac, advantage=False, disadvantage=False, proficiency=prof_bonus, simNumber=sim_num)
+
+    print("\n----\n\nChromatic Orb Expectation: (w charisma)", charisma_level, "and armor class", ac)
+    for i in levels:
+        print("For level {}".format(i))
+        print("With empSpell, with advantage")
+        spell_sim_expectedValue(2+i, 8, empSpell = True, charisma=charisma_level,
+                      armorClass=ac, advantage=True, disadvantage=False, proficiency=prof_bonus, simNumber=sim_num)
+        print("With empSpell, without advantage")
+        spell_sim_expectedValue(2+i, 8, empSpell = True, charisma=charisma_level,
+                      armorClass=ac, advantage=False, disadvantage=False, proficiency=prof_bonus, simNumber=sim_num)
+        print("Without empSpell, with advantage")
+        spell_sim_expectedValue(2+i, 8, empSpell = False, charisma=charisma_level,
+                      armorClass=ac, advantage=True, disadvantage=False, proficiency=prof_bonus, simNumber=sim_num)
+        print("Without empSpell, without advantage")
+        spell_sim_expectedValue(2+i, 8, empSpell = False, charisma=charisma_level,
                       armorClass=ac, advantage=False, disadvantage=False, proficiency=prof_bonus, simNumber=sim_num)
